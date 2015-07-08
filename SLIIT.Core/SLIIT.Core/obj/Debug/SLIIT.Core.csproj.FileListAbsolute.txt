@@ -1,0 +1,4 @@
+C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.Core\SLIIT.Core\bin\Debug\SLIIT.Core.dll
+C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.Core\SLIIT.Core\bin\Debug\SLIIT.Core.pdb
+C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.Core\SLIIT.Core\obj\Debug\SLIIT.Core.dll
+C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.Core\SLIIT.Core\obj\Debug\SLIIT.Core.pdb
