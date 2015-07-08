@@ -9,6 +9,7 @@ using System.Web.Script.Serialization;
 using System.Transactions; //if transaction manager is used only
 using System.Net.Mail;
 using SLIIT.Core;
+//using SLIIT.Core.BL;
 
 namespace SLIIT.ITP.Services
 {
@@ -36,7 +37,8 @@ namespace SLIIT.ITP.Services
         [ScriptMethod(UseHttpGet = false, ResponseFormat = ResponseFormat.Json)]
         public string GetUserByID()
         {
-            return "Hello World";
+            //return new SLIIT.Core. UserBL
+            return string.Empty;
         }
 
         #endregion
