@@ -25,9 +25,11 @@ C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.ITP\SLIIT.ITP\bin\Microsoft.ScriptMa
 C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.ITP\SLIIT.ITP\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.ITP\SLIIT.ITP\bin\Newtonsoft.Json.dll
 C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.ITP\SLIIT.ITP\bin\Owin.dll
+C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.ITP\SLIIT.ITP\bin\SLIIT.Core.dll
 C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.ITP\SLIIT.ITP\bin\System.Web.Optimization.dll
 C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.ITP\SLIIT.ITP\bin\System.Web.Providers.dll
 C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.ITP\SLIIT.ITP\bin\WebGrease.dll
+C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.ITP\SLIIT.ITP\bin\SLIIT.Core.pdb
 C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.ITP\SLIIT.ITP\bin\System.Web.Optimization.xml
 C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.ITP\SLIIT.ITP\bin\Antlr3.Runtime.pdb
 C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.ITP\SLIIT.ITP\bin\Newtonsoft.Json.xml
@@ -49,5 +51,3 @@ C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.ITP\SLIIT.ITP\bin\Microsoft.Owin.Sec
 C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.ITP\SLIIT.ITP\obj\Debug\SLIIT.ITP.csprojResolveAssemblyReference.cache
 C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.ITP\SLIIT.ITP\obj\Debug\SLIIT.ITP.dll
 C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.ITP\SLIIT.ITP\obj\Debug\SLIIT.ITP.pdb
-C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.ITP\SLIIT.ITP\bin\SLIIT.Core.dll
-C:\Users\Isuru\Documents\GitHub\SLIIT\SLIIT.ITP\SLIIT.ITP\bin\SLIIT.Core.pdb

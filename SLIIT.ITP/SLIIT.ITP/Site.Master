@@ -196,7 +196,7 @@
             <!-- BEGIN FOOTER -->
             <div class="page-footer">
                 <div class="page-footer-inner">
-                     <p>&copy; <%: DateTime.Now.Year%> - Midas Strategic IT</p>
+                     <p>&copy; <%: DateTime.Now.Year%> - SLIIT</p>
                 </div>
                 <div class="page-footer-tools">
                     <span class="go-top">
