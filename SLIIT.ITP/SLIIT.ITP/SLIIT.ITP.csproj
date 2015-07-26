@@ -5970,8 +5970,11 @@
     <Content Include="Global.asax" />
     <Content Include="Services\UserServices.asmx" />
     <Content Include="Site.Master" />
+    <Content Include="UI\HR\PunchCard.aspx" />
     <Content Include="UI\Login\iLogin.html" />
     <Content Include="UI\Login\Login.aspx" />
+    <Content Include="UI\TEST\TEST.aspx" />
+    <Content Include="UI\VF\VehicalInfo.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -6102,12 +6105,33 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="UI\HR\PunchCard.aspx.cs">
+      <DependentUpon>PunchCard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\HR\PunchCard.aspx.designer.cs">
+      <DependentUpon>PunchCard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\Login\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UI\Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TEST\TEST.aspx.cs">
+      <DependentUpon>TEST.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\TEST\TEST.aspx.designer.cs">
+      <DependentUpon>TEST.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\VF\VehicalInfo.aspx.cs">
+      <DependentUpon>VehicalInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\VF\VehicalInfo.aspx.designer.cs">
+      <DependentUpon>VehicalInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
@@ -6120,6 +6144,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
+    <Folder Include="UI\CM\" />
+    <Folder Include="UI\GP\" />
+    <Folder Include="UI\IC\" />
+    <Folder Include="UI\PC\" />
+    <Folder Include="UI\PR\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SLIIT.Core\SLIIT.Core\SLIIT.Core.csproj">

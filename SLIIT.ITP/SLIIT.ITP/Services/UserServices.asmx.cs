@@ -58,7 +58,7 @@ namespace SLIIT.ITP.Services
             
             User userToAuth = new User();
 
-            userToAuth.UserName = username;
+            userToAuth.UserName = username.ToLower();
             userToAuth.Password = password;
 
             var result = new UserBL().AutenticateLogin(userToAuth);

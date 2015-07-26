@@ -30,12 +30,21 @@ namespace SLIIT.Core.DTO
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertTB_Menu(TB_Menu instance);
-    partial void UpdateTB_Menu(TB_Menu instance);
-    partial void DeleteTB_Menu(TB_Menu instance);
+    partial void InsertTB_Dept(TB_Dept instance);
+    partial void UpdateTB_Dept(TB_Dept instance);
+    partial void DeleteTB_Dept(TB_Dept instance);
     partial void InsertTB_UserRole(TB_UserRole instance);
     partial void UpdateTB_UserRole(TB_UserRole instance);
     partial void DeleteTB_UserRole(TB_UserRole instance);
+    partial void InsertTB_HR_AttendanceLog(TB_HR_AttendanceLog instance);
+    partial void UpdateTB_HR_AttendanceLog(TB_HR_AttendanceLog instance);
+    partial void DeleteTB_HR_AttendanceLog(TB_HR_AttendanceLog instance);
+    partial void InsertTB_HR_AttendUser(TB_HR_AttendUser instance);
+    partial void UpdateTB_HR_AttendUser(TB_HR_AttendUser instance);
+    partial void DeleteTB_HR_AttendUser(TB_HR_AttendUser instance);
+    partial void InsertTB_Menu(TB_Menu instance);
+    partial void UpdateTB_Menu(TB_Menu instance);
+    partial void DeleteTB_Menu(TB_Menu instance);
     partial void InsertTB_MenuRole(TB_MenuRole instance);
     partial void UpdateTB_MenuRole(TB_MenuRole instance);
     partial void DeleteTB_MenuRole(TB_MenuRole instance);
@@ -77,11 +86,11 @@ namespace SLIIT.Core.DTO
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<TB_Menu> TB_Menus
+		public System.Data.Linq.Table<TB_Dept> TB_Depts
 		{
 			get
 			{
-				return this.GetTable<TB_Menu>();
+				return this.GetTable<TB_Dept>();
 			}
 		}
 		
@@ -90,6 +99,30 @@ namespace SLIIT.Core.DTO
 			get
 			{
 				return this.GetTable<TB_UserRole>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TB_HR_AttendanceLog> TB_HR_AttendanceLogs
+		{
+			get
+			{
+				return this.GetTable<TB_HR_AttendanceLog>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TB_HR_AttendUser> TB_HR_AttendUsers
+		{
+			get
+			{
+				return this.GetTable<TB_HR_AttendUser>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TB_Menu> TB_Menus
+		{
+			get
+			{
+				return this.GetTable<TB_Menu>();
 			}
 		}
 		
@@ -115,6 +148,714 @@ namespace SLIIT.Core.DTO
 			{
 				return this.GetTable<TB_User>();
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TB_Dept")]
+	public partial class TB_Dept : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _RnDeptID;
+		
+		private string _DeptName;
+		
+		private EntitySet<TB_HR_AttendUser> _TB_HR_AttendUsers;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRnDeptIDChanging(int value);
+    partial void OnRnDeptIDChanged();
+    partial void OnDeptNameChanging(string value);
+    partial void OnDeptNameChanged();
+    #endregion
+		
+		public TB_Dept()
+		{
+			this._TB_HR_AttendUsers = new EntitySet<TB_HR_AttendUser>(new Action<TB_HR_AttendUser>(this.attach_TB_HR_AttendUsers), new Action<TB_HR_AttendUser>(this.detach_TB_HR_AttendUsers));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RnDeptID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int RnDeptID
+		{
+			get
+			{
+				return this._RnDeptID;
+			}
+			set
+			{
+				if ((this._RnDeptID != value))
+				{
+					this.OnRnDeptIDChanging(value);
+					this.SendPropertyChanging();
+					this._RnDeptID = value;
+					this.SendPropertyChanged("RnDeptID");
+					this.OnRnDeptIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeptName", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string DeptName
+		{
+			get
+			{
+				return this._DeptName;
+			}
+			set
+			{
+				if ((this._DeptName != value))
+				{
+					this.OnDeptNameChanging(value);
+					this.SendPropertyChanging();
+					this._DeptName = value;
+					this.SendPropertyChanged("DeptName");
+					this.OnDeptNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TB_Dept_TB_HR_AttendUser", Storage="_TB_HR_AttendUsers", ThisKey="RnDeptID", OtherKey="Dept")]
+		public EntitySet<TB_HR_AttendUser> TB_HR_AttendUsers
+		{
+			get
+			{
+				return this._TB_HR_AttendUsers;
+			}
+			set
+			{
+				this._TB_HR_AttendUsers.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TB_HR_AttendUsers(TB_HR_AttendUser entity)
+		{
+			this.SendPropertyChanging();
+			entity.TB_Dept = this;
+		}
+		
+		private void detach_TB_HR_AttendUsers(TB_HR_AttendUser entity)
+		{
+			this.SendPropertyChanging();
+			entity.TB_Dept = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TB_UserRole")]
+	public partial class TB_UserRole : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _RnUserRoleID;
+		
+		private System.Nullable<int> _RoleID;
+		
+		private System.Nullable<int> _UserID;
+		
+		private EntityRef<TB_Role> _TB_Role;
+		
+		private EntityRef<TB_User> _TB_User;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRnUserRoleIDChanging(int value);
+    partial void OnRnUserRoleIDChanged();
+    partial void OnRoleIDChanging(System.Nullable<int> value);
+    partial void OnRoleIDChanged();
+    partial void OnUserIDChanging(System.Nullable<int> value);
+    partial void OnUserIDChanged();
+    #endregion
+		
+		public TB_UserRole()
+		{
+			this._TB_Role = default(EntityRef<TB_Role>);
+			this._TB_User = default(EntityRef<TB_User>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RnUserRoleID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int RnUserRoleID
+		{
+			get
+			{
+				return this._RnUserRoleID;
+			}
+			set
+			{
+				if ((this._RnUserRoleID != value))
+				{
+					this.OnRnUserRoleIDChanging(value);
+					this.SendPropertyChanging();
+					this._RnUserRoleID = value;
+					this.SendPropertyChanged("RnUserRoleID");
+					this.OnRnUserRoleIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleID", DbType="Int")]
+		public System.Nullable<int> RoleID
+		{
+			get
+			{
+				return this._RoleID;
+			}
+			set
+			{
+				if ((this._RoleID != value))
+				{
+					if (this._TB_Role.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnRoleIDChanging(value);
+					this.SendPropertyChanging();
+					this._RoleID = value;
+					this.SendPropertyChanged("RoleID");
+					this.OnRoleIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
+		public System.Nullable<int> UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					if (this._TB_User.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TB_Role_TB_UserRole", Storage="_TB_Role", ThisKey="RoleID", OtherKey="RnRoleID", IsForeignKey=true)]
+		public TB_Role TB_Role
+		{
+			get
+			{
+				return this._TB_Role.Entity;
+			}
+			set
+			{
+				TB_Role previousValue = this._TB_Role.Entity;
+				if (((previousValue != value) 
+							|| (this._TB_Role.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TB_Role.Entity = null;
+						previousValue.TB_UserRoles.Remove(this);
+					}
+					this._TB_Role.Entity = value;
+					if ((value != null))
+					{
+						value.TB_UserRoles.Add(this);
+						this._RoleID = value.RnRoleID;
+					}
+					else
+					{
+						this._RoleID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("TB_Role");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TB_User_TB_UserRole", Storage="_TB_User", ThisKey="UserID", OtherKey="RnUserID", IsForeignKey=true)]
+		public TB_User TB_User
+		{
+			get
+			{
+				return this._TB_User.Entity;
+			}
+			set
+			{
+				TB_User previousValue = this._TB_User.Entity;
+				if (((previousValue != value) 
+							|| (this._TB_User.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TB_User.Entity = null;
+						previousValue.TB_UserRoles.Remove(this);
+					}
+					this._TB_User.Entity = value;
+					if ((value != null))
+					{
+						value.TB_UserRoles.Add(this);
+						this._UserID = value.RnUserID;
+					}
+					else
+					{
+						this._UserID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("TB_User");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TB_HR_AttendanceLog")]
+	public partial class TB_HR_AttendanceLog : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _RnLogID;
+		
+		private int _UserID;
+		
+		private System.DateTime _LogTime;
+		
+		private bool _Type;
+		
+		private EntityRef<TB_HR_AttendUser> _TB_HR_AttendUser;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRnLogIDChanging(int value);
+    partial void OnRnLogIDChanged();
+    partial void OnUserIDChanging(int value);
+    partial void OnUserIDChanged();
+    partial void OnLogTimeChanging(System.DateTime value);
+    partial void OnLogTimeChanged();
+    partial void OnTypeChanging(bool value);
+    partial void OnTypeChanged();
+    #endregion
+		
+		public TB_HR_AttendanceLog()
+		{
+			this._TB_HR_AttendUser = default(EntityRef<TB_HR_AttendUser>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RnLogID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int RnLogID
+		{
+			get
+			{
+				return this._RnLogID;
+			}
+			set
+			{
+				if ((this._RnLogID != value))
+				{
+					this.OnRnLogIDChanging(value);
+					this.SendPropertyChanging();
+					this._RnLogID = value;
+					this.SendPropertyChanged("RnLogID");
+					this.OnRnLogIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL")]
+		public int UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					if (this._TB_HR_AttendUser.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogTime", DbType="DateTime NOT NULL")]
+		public System.DateTime LogTime
+		{
+			get
+			{
+				return this._LogTime;
+			}
+			set
+			{
+				if ((this._LogTime != value))
+				{
+					this.OnLogTimeChanging(value);
+					this.SendPropertyChanging();
+					this._LogTime = value;
+					this.SendPropertyChanged("LogTime");
+					this.OnLogTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Bit NOT NULL")]
+		public bool Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TB_HR_AttendUser_TB_HR_AttendanceLog", Storage="_TB_HR_AttendUser", ThisKey="UserID", OtherKey="RnAttendUserID", IsForeignKey=true)]
+		public TB_HR_AttendUser TB_HR_AttendUser
+		{
+			get
+			{
+				return this._TB_HR_AttendUser.Entity;
+			}
+			set
+			{
+				TB_HR_AttendUser previousValue = this._TB_HR_AttendUser.Entity;
+				if (((previousValue != value) 
+							|| (this._TB_HR_AttendUser.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TB_HR_AttendUser.Entity = null;
+						previousValue.TB_HR_AttendanceLogs.Remove(this);
+					}
+					this._TB_HR_AttendUser.Entity = value;
+					if ((value != null))
+					{
+						value.TB_HR_AttendanceLogs.Add(this);
+						this._UserID = value.RnAttendUserID;
+					}
+					else
+					{
+						this._UserID = default(int);
+					}
+					this.SendPropertyChanged("TB_HR_AttendUser");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TB_HR_AttendUser")]
+	public partial class TB_HR_AttendUser : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _RnAttendUserID;
+		
+		private string _FirstName;
+		
+		private string _LastName;
+		
+		private System.Nullable<int> _Dept;
+		
+		private System.Nullable<bool> _IsDeleted;
+		
+		private EntitySet<TB_HR_AttendanceLog> _TB_HR_AttendanceLogs;
+		
+		private EntityRef<TB_Dept> _TB_Dept;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRnAttendUserIDChanging(int value);
+    partial void OnRnAttendUserIDChanged();
+    partial void OnFirstNameChanging(string value);
+    partial void OnFirstNameChanged();
+    partial void OnLastNameChanging(string value);
+    partial void OnLastNameChanged();
+    partial void OnDeptChanging(System.Nullable<int> value);
+    partial void OnDeptChanged();
+    partial void OnIsDeletedChanging(System.Nullable<bool> value);
+    partial void OnIsDeletedChanged();
+    #endregion
+		
+		public TB_HR_AttendUser()
+		{
+			this._TB_HR_AttendanceLogs = new EntitySet<TB_HR_AttendanceLog>(new Action<TB_HR_AttendanceLog>(this.attach_TB_HR_AttendanceLogs), new Action<TB_HR_AttendanceLog>(this.detach_TB_HR_AttendanceLogs));
+			this._TB_Dept = default(EntityRef<TB_Dept>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RnAttendUserID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int RnAttendUserID
+		{
+			get
+			{
+				return this._RnAttendUserID;
+			}
+			set
+			{
+				if ((this._RnAttendUserID != value))
+				{
+					this.OnRnAttendUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._RnAttendUserID = value;
+					this.SendPropertyChanged("RnAttendUserID");
+					this.OnRnAttendUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="VarChar(MAX)")]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this.OnFirstNameChanging(value);
+					this.SendPropertyChanging();
+					this._FirstName = value;
+					this.SendPropertyChanged("FirstName");
+					this.OnFirstNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="VarChar(MAX)")]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this.OnLastNameChanging(value);
+					this.SendPropertyChanging();
+					this._LastName = value;
+					this.SendPropertyChanged("LastName");
+					this.OnLastNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dept", DbType="Int")]
+		public System.Nullable<int> Dept
+		{
+			get
+			{
+				return this._Dept;
+			}
+			set
+			{
+				if ((this._Dept != value))
+				{
+					if (this._TB_Dept.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnDeptChanging(value);
+					this.SendPropertyChanging();
+					this._Dept = value;
+					this.SendPropertyChanged("Dept");
+					this.OnDeptChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsDeleted", DbType="Bit")]
+		public System.Nullable<bool> IsDeleted
+		{
+			get
+			{
+				return this._IsDeleted;
+			}
+			set
+			{
+				if ((this._IsDeleted != value))
+				{
+					this.OnIsDeletedChanging(value);
+					this.SendPropertyChanging();
+					this._IsDeleted = value;
+					this.SendPropertyChanged("IsDeleted");
+					this.OnIsDeletedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TB_HR_AttendUser_TB_HR_AttendanceLog", Storage="_TB_HR_AttendanceLogs", ThisKey="RnAttendUserID", OtherKey="UserID")]
+		public EntitySet<TB_HR_AttendanceLog> TB_HR_AttendanceLogs
+		{
+			get
+			{
+				return this._TB_HR_AttendanceLogs;
+			}
+			set
+			{
+				this._TB_HR_AttendanceLogs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TB_Dept_TB_HR_AttendUser", Storage="_TB_Dept", ThisKey="Dept", OtherKey="RnDeptID", IsForeignKey=true)]
+		public TB_Dept TB_Dept
+		{
+			get
+			{
+				return this._TB_Dept.Entity;
+			}
+			set
+			{
+				TB_Dept previousValue = this._TB_Dept.Entity;
+				if (((previousValue != value) 
+							|| (this._TB_Dept.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TB_Dept.Entity = null;
+						previousValue.TB_HR_AttendUsers.Remove(this);
+					}
+					this._TB_Dept.Entity = value;
+					if ((value != null))
+					{
+						value.TB_HR_AttendUsers.Add(this);
+						this._Dept = value.RnDeptID;
+					}
+					else
+					{
+						this._Dept = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("TB_Dept");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TB_HR_AttendanceLogs(TB_HR_AttendanceLog entity)
+		{
+			this.SendPropertyChanging();
+			entity.TB_HR_AttendUser = this;
+		}
+		
+		private void detach_TB_HR_AttendanceLogs(TB_HR_AttendanceLog entity)
+		{
+			this.SendPropertyChanging();
+			entity.TB_HR_AttendUser = null;
 		}
 	}
 	
@@ -325,198 +1066,6 @@ namespace SLIIT.Core.DTO
 		{
 			this.SendPropertyChanging();
 			entity.TB_Menu = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TB_UserRole")]
-	public partial class TB_UserRole : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _RnUserRoleID;
-		
-		private System.Nullable<int> _RoleID;
-		
-		private System.Nullable<int> _UserID;
-		
-		private EntityRef<TB_Role> _TB_Role;
-		
-		private EntityRef<TB_User> _TB_User;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnRnUserRoleIDChanging(int value);
-    partial void OnRnUserRoleIDChanged();
-    partial void OnRoleIDChanging(System.Nullable<int> value);
-    partial void OnRoleIDChanged();
-    partial void OnUserIDChanging(System.Nullable<int> value);
-    partial void OnUserIDChanged();
-    #endregion
-		
-		public TB_UserRole()
-		{
-			this._TB_Role = default(EntityRef<TB_Role>);
-			this._TB_User = default(EntityRef<TB_User>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RnUserRoleID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int RnUserRoleID
-		{
-			get
-			{
-				return this._RnUserRoleID;
-			}
-			set
-			{
-				if ((this._RnUserRoleID != value))
-				{
-					this.OnRnUserRoleIDChanging(value);
-					this.SendPropertyChanging();
-					this._RnUserRoleID = value;
-					this.SendPropertyChanged("RnUserRoleID");
-					this.OnRnUserRoleIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleID", DbType="Int")]
-		public System.Nullable<int> RoleID
-		{
-			get
-			{
-				return this._RoleID;
-			}
-			set
-			{
-				if ((this._RoleID != value))
-				{
-					if (this._TB_Role.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnRoleIDChanging(value);
-					this.SendPropertyChanging();
-					this._RoleID = value;
-					this.SendPropertyChanged("RoleID");
-					this.OnRoleIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
-		public System.Nullable<int> UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					if (this._TB_User.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TB_Role_TB_UserRole", Storage="_TB_Role", ThisKey="RoleID", OtherKey="RnRoleID", IsForeignKey=true)]
-		public TB_Role TB_Role
-		{
-			get
-			{
-				return this._TB_Role.Entity;
-			}
-			set
-			{
-				TB_Role previousValue = this._TB_Role.Entity;
-				if (((previousValue != value) 
-							|| (this._TB_Role.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TB_Role.Entity = null;
-						previousValue.TB_UserRoles.Remove(this);
-					}
-					this._TB_Role.Entity = value;
-					if ((value != null))
-					{
-						value.TB_UserRoles.Add(this);
-						this._RoleID = value.RnRoleID;
-					}
-					else
-					{
-						this._RoleID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TB_Role");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TB_User_TB_UserRole", Storage="_TB_User", ThisKey="UserID", OtherKey="RnUserID", IsForeignKey=true)]
-		public TB_User TB_User
-		{
-			get
-			{
-				return this._TB_User.Entity;
-			}
-			set
-			{
-				TB_User previousValue = this._TB_User.Entity;
-				if (((previousValue != value) 
-							|| (this._TB_User.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TB_User.Entity = null;
-						previousValue.TB_UserRoles.Remove(this);
-					}
-					this._TB_User.Entity = value;
-					if ((value != null))
-					{
-						value.TB_UserRoles.Add(this);
-						this._UserID = value.RnUserID;
-					}
-					else
-					{
-						this._UserID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TB_User");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -894,6 +1443,8 @@ namespace SLIIT.Core.DTO
 		
 		private string _LastName;
 		
+		private System.Nullable<int> _Dept;
+		
 		private string _ProfilePic;
 		
 		private EntitySet<TB_UserRole> _TB_UserRoles;
@@ -912,6 +1463,8 @@ namespace SLIIT.Core.DTO
     partial void OnFirstNameChanged();
     partial void OnLastNameChanging(string value);
     partial void OnLastNameChanged();
+    partial void OnDeptChanging(System.Nullable<int> value);
+    partial void OnDeptChanged();
     partial void OnProfilePicChanging(string value);
     partial void OnProfilePicChanged();
     #endregion
@@ -1018,6 +1571,26 @@ namespace SLIIT.Core.DTO
 					this._LastName = value;
 					this.SendPropertyChanged("LastName");
 					this.OnLastNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dept", DbType="Int")]
+		public System.Nullable<int> Dept
+		{
+			get
+			{
+				return this._Dept;
+			}
+			set
+			{
+				if ((this._Dept != value))
+				{
+					this.OnDeptChanging(value);
+					this.SendPropertyChanging();
+					this._Dept = value;
+					this.SendPropertyChanged("Dept");
+					this.OnDeptChanged();
 				}
 			}
 		}

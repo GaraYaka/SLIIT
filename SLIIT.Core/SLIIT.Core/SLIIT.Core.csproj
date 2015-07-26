@@ -48,6 +48,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ITPManager.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Entity\HR_AttendanceLog.cs" />
+    <Compile Include="Entity\HR_AttendUser.cs" />
     <Compile Include="Entity\SLIITCommonResource.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

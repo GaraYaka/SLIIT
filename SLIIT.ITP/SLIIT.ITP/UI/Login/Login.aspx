@@ -52,7 +52,7 @@
 
                     window.location = "../../Default.aspx";
                 }, error: function (request, status, error) {
-                    alert("f");
+                    alert("Incorretc User and Password");
                 }
             });
         }
