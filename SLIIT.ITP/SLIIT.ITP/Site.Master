@@ -156,6 +156,7 @@
                     <!-- END STYLE CUSTOMIZER -->--%>
                     <!-- BEGIN PAGE HEADER-->
                     <h3 class="page-title">
+                        <img src="<%: ResolveUrl("Images/midaslogo.jpg") %>" />
                         <asp:Label ID="lblTitle" runat="server" Text=""></asp:Label>
                         <small>  <asp:Label ID="lblSubTile" runat="server" Text=""></asp:Label></small>
                     </h3>

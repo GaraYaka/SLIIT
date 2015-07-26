@@ -4258,6 +4258,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Images\midaslogo.jpg" />
     <Content Include="Kendoui\js\angular.min.js" />
     <Content Include="Kendoui\js\cultures\kendo.culture.af-ZA.min.js" />
     <Content Include="Kendoui\js\cultures\kendo.culture.af.min.js" />
@@ -6096,6 +6097,9 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SLLITPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="UI\Login\Login.aspx.cs">

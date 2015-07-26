@@ -6,6 +6,9 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using SLIIT.ITP;
+using SLIIT.Core.BL;
+using SLIIT.Core.Entity;
 
 namespace SLIIT.ITP
 {
@@ -68,13 +71,49 @@ namespace SLIIT.ITP
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.setUserDetails();
         }
+
+
+        private void setUserDetails()
+        {
+            var session = new SLLITPage();
+
+            var user = new UserBL().GetUserByID(session.CurrentUserID);
+
+            lblUserName.Text = user.DisplayName;
+        }
+
+
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
         {
             Context.GetOwinContext().Authentication.SignOut();
         }
+
+        #region Getters/Setters
+
+        public string SetPageTitle
+        {
+            set
+            {
+
+                lblTitle.Text = value;
+            }
+        }
+
+        public string SetPageSubTitle
+        {
+            set
+            {
+                lblSubTile.Text = value;
+            }
+        }
+
+        #endregion
+
+
+
     }
 
 }

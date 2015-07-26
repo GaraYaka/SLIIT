@@ -30,6 +30,39 @@
     <link href="../../assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css" />
     <!-- END THEME STYLES -->
     <link rel="shortcut icon" href="favicon.ico" />
+
+    <script type="text/javascript">
+
+        function btnLogin_Click()
+        {
+
+            var txtusername = $("#txtUsername").val();
+            var txtpassword = $("#txtPassword").val();
+
+            var sendData = JSON.stringify({ username: txtusername, password: txtpassword });
+
+
+            $.ajax({
+                url: "../../Services/UserServices.asmx/AuthUser",
+                dataType: "json",
+                data : sendData,
+                contentType: "application/json; charset=utf-8",
+                type: "POST",
+                success: function (result) {
+
+                    window.location = "../../Default.aspx";
+                }, error: function (request, status, error) {
+                    alert("f");
+                }
+            });
+        }
+
+
+    </script>
+
+
+
+
 </head>
 <body class="login">
     <form id="form1" runat="server">
@@ -60,26 +93,28 @@
                 <label class="control-label visible-ie8 visible-ie9">Username</label>
                 <div class="input-icon">
                     <i class="fa fa-user"></i>
-                    <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" />
+                    <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" id="txtUsername" />
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label visible-ie8 visible-ie9">Password</label>
                 <div class="input-icon">
                     <i class="fa fa-lock"></i>
-                    <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" />
+                    <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" id="txtPassword" />
                 </div>
             </div>
             <div class="form-actions">
                 <label class="checkbox">
                     <input type="checkbox" name="remember" value="1" /> Remember me
                 </label>
-                <%--<asp:button type="submit" class="btn green-haze pull-right">
-                    Login <i class="m-icon-swapright m-icon-white"></i>--%>
 
-                     <asp:Button CssClass="btn red pull-right" ID="btnLogin" runat="server" CommandName="Login" Text="Log in" OnClick="btnLogin_Click" />
-     
-                <%--</asp:button>--%>
+                <span class="btn red pull-right" id="btnLogin" onclick="btnLogin_Click();" >Login</span>
+
+      <br />
+      <br />
+      <asp:Label ID="GreetingLabel" runat="server" 
+                 Visible="false" Text="Hello World!" />
+
             </div>
             
         </form>

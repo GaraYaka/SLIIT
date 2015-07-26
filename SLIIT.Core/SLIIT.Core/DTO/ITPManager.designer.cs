@@ -890,6 +890,12 @@ namespace SLIIT.Core.DTO
 		
 		private string _Password;
 		
+		private string _FirstName;
+		
+		private string _LastName;
+		
+		private string _ProfilePic;
+		
 		private EntitySet<TB_UserRole> _TB_UserRoles;
 		
     #region Extensibility Method Definitions
@@ -902,6 +908,12 @@ namespace SLIIT.Core.DTO
     partial void OnUserNameChanged();
     partial void OnPasswordChanging(string value);
     partial void OnPasswordChanged();
+    partial void OnFirstNameChanging(string value);
+    partial void OnFirstNameChanged();
+    partial void OnLastNameChanging(string value);
+    partial void OnLastNameChanged();
+    partial void OnProfilePicChanging(string value);
+    partial void OnProfilePicChanged();
     #endregion
 		
 		public TB_User()
@@ -966,6 +978,66 @@ namespace SLIIT.Core.DTO
 					this._Password = value;
 					this.SendPropertyChanged("Password");
 					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="VarChar(MAX)")]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this.OnFirstNameChanging(value);
+					this.SendPropertyChanging();
+					this._FirstName = value;
+					this.SendPropertyChanged("FirstName");
+					this.OnFirstNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="VarChar(MAX)")]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this.OnLastNameChanging(value);
+					this.SendPropertyChanging();
+					this._LastName = value;
+					this.SendPropertyChanged("LastName");
+					this.OnLastNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProfilePic", DbType="VarChar(MAX)")]
+		public string ProfilePic
+		{
+			get
+			{
+				return this._ProfilePic;
+			}
+			set
+			{
+				if ((this._ProfilePic != value))
+				{
+					this.OnProfilePicChanging(value);
+					this.SendPropertyChanging();
+					this._ProfilePic = value;
+					this.SendPropertyChanged("ProfilePic");
+					this.OnProfilePicChanged();
 				}
 			}
 		}
